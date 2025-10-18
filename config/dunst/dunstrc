@@ -1,0 +1,63 @@
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#  Dunst 通知守护进程配置文件
+#  路径：~/.config/dunst/dunstrc
+#
+#  颜色格式：
+#    #RRGGBB        不透明（7 位）
+#    #AARRGGBB      带透明（9 位，AA 为 00–FF）
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+[global]
+    # ---- 几何与布局 ----
+    width               = 300
+    height              = 100
+    origin              = top-right
+    offset              = 10x10
+    margin              = 10
+    padding             = 10
+    horizontal_padding  = 10
+    separator_height    = 2          # 通知之间的分割线
+    corner_radius       = 4
+    icon_size           = 48
+    max_icon_size       = 48
+    line_height         = 0          # 0 = 跟随字体
+    notification_limit  = 10         # 同时最多 10 条（等同 mako max-visible）
+
+    # ---- 颜色与字体 ----
+    frame_color         = "#00000000"  # 边框颜色（全透明 = 无边框）
+    font                = Iosevka Nerd Font 10
+    markup              = full
+
+    # ---- 超时 ----
+    timeout             = 10           # 默认 10 s（normal 级别会覆盖）
+    show_age_threshold  = 60
+
+    # ---- 动画与行为 ----
+    transparency        = 0            # 0 = 让 compositor 按 ARGB 处理
+    mouse_left_click    = close_current
+    mouse_right_click   = close_all
+    progress_bar        = true
+    progress_bar_height = 6
+    progress_bar_frame_width = 0
+    sticky_history      = yes
+    history_length      = 20
+    dmenu               = /usr/bin/dmenu -p dunst:
+
+# ---------------- 按紧急度微调 ----------------
+[urgency_low]
+    background = "#64646480"   # 50 % 透明灰
+    foreground = "#e5e5e5ff"
+    frame_color = "#00000000"
+    timeout = 5                # 5 秒
+
+[urgency_normal]
+    background = "#64646480"
+    foreground = "#e5e5e5ff"
+    frame_color = "#00000000"
+    timeout = 10               # 10 秒
+
+[urgency_critical]
+    background = "#38383880"
+    foreground = "#bf616aff"
+    frame_color = "#00000000"
+    timeout = 0                # 不自动消失

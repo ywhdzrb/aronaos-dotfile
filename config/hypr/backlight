@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# 文件名：~/.config/hypr/backlight
+# 依赖：brightnessctl（pacman -S brightnessctl）
+
+icon_display="/usr/share/icons/Papirus/32x32/devices/computer.svg"
+
+# 获取当前亮度百分比（brightnessctl 直接给出 %）
+get_percentage() {
+    brightnessctl -m | awk -F',|%' '{print $4}'
+}
+
+# 发送通知（带进度条）
+send_notification() {
+    local percentage=$(get_percentage)
+    local bar=$(seq -s "─" $((percentage / 5)) | sed 's/[0-9]//g')
+    notify-send -h string:x-canonical-private-synchronous:sys-notify \
+                -u low -i "$icon_display" "亮度: ${percentage}% $bar"
+}
+
+# 主逻辑
+case "$1" in
+    --inc)
+        brightnessctl set 5%+
+        ;;
+    --dec)
+        brightnessctl set 5%-
+        ;;
+    *)
+        echo "用法: $0 [--inc | --dec]"
+        exit 1
+        ;;
+esac
+
+# 无论增减都刷新通知
+send_notification

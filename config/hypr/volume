@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+# 获取默认音量源名称
+SINK=$(pactl get-default-sink)
+
+# 通知图标路径（可根据需要修改）
+icon_audio="/usr/share/icons/Papirus/16x16/symbolic/status/audio-volume-high-symbolic.svg"
+icon_muted="/usr/share/icons/Papirus/16x16/symbolic/status/audio-volume-low-symbolic.svg"
+
+# 获取当前音量状态和音量值
+get_volume() {
+    pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | tr -d '%' | head -1
+}
+
+get_mute() {
+    pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}'
+}
+
+# 发送通知
+send_notification() {
+    local volume=$(get_volume)
+    local mute=$(get_mute)
+    
+    if [ "$mute" = "yes" ]; then
+        notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$icon_muted" "音量: 静音"
+    else
+        # 使用条形图表示音量
+        bar=$(seq -s "─" $((volume / 5)) | sed 's/[0-9]//g')
+        notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$icon_audio" "音量: $volume% $bar"
+    fi
+}
+
+# 处理参数
+case "$1" in
+    --inc)
+        pactl set-sink-volume @DEFAULT_SINK@ +5%
+        ;;
+    --dec)
+        pactl set-sink-volume @DEFAULT_SINK@ -5%
+        ;;
+    --toggle)
+        pactl set-sink-mute @DEFAULT_SINK@ toggle
+        ;;
+    *)
+        echo "用法: $0 [--inc | --dec | --toggle]"
+        exit 1
+        ;;
+esac
+
+# 发送状态通知
+send_notification

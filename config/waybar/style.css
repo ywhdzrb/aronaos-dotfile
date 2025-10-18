@@ -1,0 +1,129 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Noto Sans CJK SC", sans-serif;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(40, 40, 40, 0);
+    color: #e5e5e5;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#workspaces {
+    background-color: rgba(100, 100, 100, 0.5);
+    border-radius: 4px;
+    padding: 0 8px;
+    margin: 0 5px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    background: transparent;
+    color: #e5e5e5;
+    border-bottom: 2px solid transparent;
+}
+
+#workspaces button.focused {
+    background-color: rgba(60, 60, 60, 0.5);
+    border-radius: 4px;
+}
+
+#workspaces button.active {
+    background-color: rgba(80, 80, 80, 0.5);
+    border-radius: 4px;
+}
+
+#workspaces button.urgent {
+    background-color: rgba(191, 97, 106, 0.5);
+    border-radius: 4px;
+}
+
+#clock, #battery, #cpu, #memory, #disk, #tray, #network, #pulseaudio, #custom-power {
+    padding: 0 8px;
+    margin: 0 1.5px;
+    color: #e5e5e5;
+}
+
+#clock {
+    background-color: rgba(100, 100, 100, 0.5);
+    border-radius: 4px;
+}
+
+#battery {
+    background-color: rgba(100, 100, 100, 0.5);
+    border-radius: 4px;
+}
+
+#battery.charging {
+    color: #a3be8c;
+}
+
+@keyframes blink {
+    to {
+        background-color: #bf616a;
+        color: #e5e5e5;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #bf616a;
+    color: #e5e5e5;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#cpu {
+    background-color: rgba(100, 100, 100, 0.5);
+    border-radius: 4px;
+}
+
+#memory {
+    background-color: rgba(100, 100, 100, 0.5);
+    border-radius: 4px;
+}
+
+#disk {
+    background-color: rgba(100, 100, 100, 0.5);
+    border-radius: 4px;
+}
+
+#network {
+    background-color: rgba(100, 100, 100, 0.5);
+    border-radius: 4px;
+}
+
+#network.disconnected {
+    background-color: #bf616a;
+}
+
+#pulseaudio {
+    background-color: rgba(100, 100, 100, 0.5);
+    border-radius: 4px;
+}
+
+#pulseaudio.muted {
+    background-color: #bf616a;
+}
+
+#tray {
+    background-color: rgba(100, 100, 100, 0.5);
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+#custom-power {
+    background-color: rgba(100, 100, 100, 0.5);
+    border-radius: 4px;
+    margin-right: 8px;
+}
+
+#custom-power:hover {
+    background-color: #bf616a;
+}

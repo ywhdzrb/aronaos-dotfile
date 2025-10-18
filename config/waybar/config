@@ -1,0 +1,163 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "spacing": 4,
+  "modules-left": ["hyprland/workspaces"],
+  "modules-right": [
+    "network",
+    "network#speed",
+    "cpu",
+    "memory",
+    "disk",
+    "pulseaudio",
+    "battery",
+    "clock",
+    "tray"
+  ],
+  
+  // 工作区模块 (Hyprland)
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "一",
+      "2": "二",
+      "3": "三",
+      "4": "四",
+      "5": "五",
+      "6": "六",
+      "7": "七",
+      "8": "八"
+    },
+    "all-outputs": true,
+    "persistent-workspaces": {
+      "*": 8
+    },
+    "on-click": "activate"
+  },
+  
+  // 当前窗口
+  "hyprland/window": {
+    "max-length": 50,
+    "separate-outputs": true
+  },
+  
+  // CPU 使用率
+  "cpu": {
+    "interval": 1,
+    "format": " {usage}%",
+    "tooltip": true,
+    "on-click": "kitty --class=htop htop",
+    "min-length": 5,    // 根据你的字体大小调整
+    "width": 5,         // 固定宽度
+    "align": "center"   // 文字居中
+  },
+  
+  // 内存使用
+  "memory": {
+    "interval": 5,
+    "format": " {percentage}%",
+    "tooltip-format": "内存使用: {used:0.1f}G/{total:0.1f}G",
+    "min-length": 5,    // 根据你的字体大小调整
+    "width": 5,         // 固定宽度
+    "align": "center"   // 文字居中
+  },
+  
+  // 磁盘使用
+  "disk": {
+    "interval": 30,
+    "path": "/",
+    "format": " {percentage_used}%",
+    "tooltip-format": "路径: {path}\n已用: {used}\n可用: {free}\n总计: {total}",
+    "on-click": "dolphin", // 点击后打开文件管理器
+    "min-length": 5,    // 根据你的字体大小调整
+    "width": 5,         // 固定宽度
+    "align": "center"   // 文字居中
+  },
+  
+  // 网络连接状态
+  "network": {
+    "interval": 5,
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-ethernet": " {ifname} ({ipaddr})",
+    "format-wifi": " {essid} ({signalStrength}%)",
+    "format-disconnected": "󰤮 断开连接",
+    "tooltip-format": " {ifname} via {gwaddr}",
+    // "on-click": "nm-connection-editor"
+    "on-click": "exec setsid uwsm app -- 'kitty' --class=Impala -e impala  "
+  },
+  
+  // 网络速度监控
+  "network#speed": {
+    "interval": 1,  // 从1秒改为2秒，减少跳动频率
+    "format": " {bandwidthDownBytes}  {bandwidthUpBytes}",
+    "format-alt": " {bandwidthDownBytes}  {bandwidthUpBytes}",
+    "min-length": 22,    // 根据你的字体大小调整
+    "width": 22,         // 固定宽度
+    "align": "center",   // 文字居中
+    "tooltip-format": "下载: {bandwidthDownBytes}\n上传: {bandwidthUpBytes}"
+},
+  
+  // 音量控制（支持滚轮调节）
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{icon} {volume}%",
+    "format-muted": "󰖁 静音",
+    "format-icons": {
+      "headphone": "󰋋",
+      "hands-free": "",
+      "headset": "󰋎",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "scroll-step": 5,
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol",
+    "tooltip": false,
+    "min-length": 5,    // 根据你的字体大小调整
+    "width": 5,         // 固定宽度
+    "align": "center"   // 文字居中
+  },
+  
+  // 电池状态
+  "battery": {
+    "interval": 10,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{icon} {time}",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "tooltip-format": "{capacity}% 剩余"
+  },
+  
+  // 系统时钟
+  "clock": {
+    "interval": 1,
+    "format": "{:%Y-%m-%d %H:%M:%S}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "actions": {
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down"
+    }
+  },
+  
+  // 系统托盘
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
+  },
+  
+  // 电源菜单
+  "custom/power": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "~/.config/waybar/powermenu.sh"
+  }
+}

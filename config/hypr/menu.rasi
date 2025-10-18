@@ -1,0 +1,146 @@
+// 全局配置设置
+configuration {
+    font:                           "Iosevka Nerd Font 10";  // 设置字体和字号
+    show-icons:                     true;                   // 启用图标显示
+    icon-theme:                     "Papirus";              // 设置图标主题
+    display-drun:                   "";                     // 设置 drun 模式显示格式
+    drun-display-format:            "{name}";               // 仅显示应用程序名称
+    disable-history:                false;                  // 不禁用历史记录
+    fullscreen:                     false;                  // 不全屏显示
+    hide-scrollbar:                 true;                   // 隐藏滚动条
+    sidebar-mode:                   false;                  // 禁用侧边栏模式
+}
+
+// 导入颜色配置文件
+@import "colors.rasi"
+
+// 窗口主设置
+window {
+    transparency:                   "real";                 // 使用真实透明度
+    background-color:               @bg;                    // 使用背景色（来自颜色文件）
+    text-color:                     @fg;                    // 使用前景色（文本颜色）
+    border:                         1px;                    // 边框宽度
+    border-color:                   @bg;                    // 边框颜色（强调色）
+    border-radius:                  4px;                    // 边框圆角半径
+    width:                          400px;                  // 窗口宽度
+    location:                       center;                 // 窗口显示位置（屏幕中央）
+    x-offset:                       0;                      // X轴偏移量
+    y-offset:                       0;                      // Y轴偏移量
+}
+
+// 提示文本设置
+prompt {
+    enabled:                        true;                   // 启用提示
+    padding:                        8px 12px;               // 内边距（上下8px，左右12px）
+    background-color:               @bga;                   // 背景颜色（带透明度的背景）
+    text-color:                     @ac;                    // 文本颜色（强调色）
+    border-radius:                  6px;                    // 圆角半径
+}
+
+// 提示符冒号设置（使用Feather图标）
+textbox-prompt-colon {
+    padding:                        6px;                    // 内边距
+    background-color:               @bga;                   // 背景颜色
+    text-color:                     @ac;                    // 文本颜色
+    expand:                         false;                  // 不扩展
+    str:                            "";                    // 使用Feather搜索图标
+    font:                           "feather 12";           // 设置图标字体和大小
+}
+
+// 输入框设置
+entry {
+    background-color:               @al;                    // 背景颜色（辅助色）
+    text-color:                     @fg;                    // 文本颜色
+    placeholder-color:              @fg;                    // 占位符文本颜色
+    expand:                         true;                   // 扩展填充可用空间
+    horizontal-align:               0;                      // 水平对齐方式
+    placeholder:                    "搜索应用...";           // 占位符提示文本
+    padding:                        8px 12px;               // 内边距
+    blink:                          true;                   // 启用光标闪烁
+    border-radius:                  6px;                    // 圆角半径
+}
+
+// 输入栏设置（包含提示符和输入框）
+inputbar {
+    children:                       [ textbox-prompt-colon, prompt, entry ]; // 子元素排列顺序
+    background-color:               @bga;                   // 背景颜色
+    text-color:                     @fg;                    // 文本颜色
+    expand:                         false;                  // 不扩展
+    border:                         0px 0px 1px 0px;        // 仅底部有边框
+    border-radius:                  0px;                    // 无圆角
+    border-color:                   @fg;                    // 边框颜色
+    margin:                         10px;                   // 外边距
+    padding:                        8px;                    // 内边距
+}
+
+// 列表视图设置
+listview {
+    background-color:               transparent;            // 透明背景
+    padding:                        10px;                   // 内边距
+    columns:                        1;                      // 单列布局
+    lines:                          8;                      // 显示8行
+    spacing:                        6px;                    // 项目间距
+    cycle:                          true;                   // 允许循环导航
+    dynamic:                        true;                   // 动态调整高度
+    layout:                         vertical;               // 垂直布局
+}
+
+// 主容器设置
+mainbox {
+    background-color:               transparent;            // 透明背景
+    border:                         0px;                    // 无边框
+    border-radius:                  0px;                    // 无圆角
+    children:                       [ inputbar, listview ]; // 包含输入栏和列表视图
+    spacing:                        0px;                    // 子元素间距
+    padding:                        0px;                   // 内边距
+}
+
+// 列表项元素设置
+element {
+    background-color:               @al;                    // 背景颜色
+    text-color:                     @fg;                    // 文本颜色
+    orientation:                    horizontal;             // 水平布局
+    border-radius:                  6px;                    // 圆角半径
+    padding:                        8px 12px;               // 内边距
+}
+
+// 列表项图标设置
+element-icon {
+    background-color:               transparent;            // 透明背景
+    text-color:                     inherit;                // 继承文本颜色
+    size:                           24px;                   // 图标尺寸
+    border:                         0px;                    // 无边框
+    margin:                         0px 12px 0px 0px;       // 右边距12px
+}
+
+// 列表项文本设置
+element-text {
+    background-color:               transparent;            // 透明背景
+    text-color:                     inherit;                // 继承文本颜色
+    expand:                         true;                   // 扩展填充空间
+    horizontal-align:               0;                      // 左对齐
+    vertical-align:                 0.5;                    // 垂直居中
+    margin:                         0px 2.5px 0px 2.5px;    // 左右边距
+}
+
+// 选中状态列表项设置
+element selected {
+    background-color:               @se;                    // 选中状态背景色
+    text-color:                     @bg;                    // 选中状态文本色
+    border:                         0px;                    // 无边框
+    border-radius:                  4px;                    // 圆角半径
+    border-color:                   @ac;                    // 边框颜色
+}
+
+// 活动状态列表项设置
+element active {
+    background-color:               @ac;                    // 活动状态背景色
+    text-color:                     @fg;                    // 活动状态文本色
+}
+
+// 滚动条设置
+scrollbar {
+    handle-color:                   @ac;                    // 滚动条手柄颜色
+    handle-width:                   8px;                    // 手柄宽度
+    border-radius:                  4px;                    // 圆角半径
+}
