@@ -49,6 +49,19 @@ cp -r ./.icons ~/.icons
 # cp -r ./icons /usr/share/icons
 echo "icons 已安装"
 
+# 安装图标
+# 询问用户是否安装图标
+read -p "是否安装图标？(y/n) " install_icons
+
+if [[ $install_icons == "y" ]]; then
+    # 安装图标
+    echo "安装图标..."
+    wget -qO- https://git.io/papirus-icon-theme-install | sh
+    wget -qO- https://git.io/papirus-icon-theme-install | env DESTDIR="$HOME/.icons" sh
+    wget -qO- https://git.io/papirus-icon-theme-install | env DESTDIR="$HOME/.local/share/icons" sh
+    echo "图标已安装"
+fi
+
 # 复制wallpaper
 cp -r ./wallpaper ~/wallpaper
 echo "wallpaper 已安装"
