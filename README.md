@@ -27,7 +27,7 @@ cd aronaos-dotfile
 | `SUPER + RETURN` | 终端 | `kitty` |
 | `SUPER + S` | 浏览器 | `firefox` |
 | `SUPER + E` | 文件管理器 | `thunar` |
-| `SUPER + C` | VS Code | `code` |
+| `SUPER + C` | VS Code（自己安装） | `code` |
 | `SUPER + A` | QQ | `linuxqq` |
 | `SUPER + W` | 微信 | `wechat.sh` |
 | `SUPER + H` | Clash Verge | `clash-verge` |
