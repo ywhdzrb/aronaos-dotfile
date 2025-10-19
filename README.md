@@ -4,8 +4,11 @@ AronaOS-dotfile 是基于Manjaro Linux的hyprland桌面环境的dotfile配置文
 
 bilibili 视频链接：[什么？AronaOS【精剪版】](https://www.bilibili.com/video/BV17E411h73h/)
 
+主界面
 <img src="./img/1.png">
+电源菜单
 <img src="./img/2.png">
+应用启动器
 <img src="./img/3.png">
 
 ## 安装
