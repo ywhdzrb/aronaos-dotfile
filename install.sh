@@ -15,10 +15,14 @@ if [[ $change_mirror == "y" ]]; then
     echo "镜像源已更改为清华大学镜像源"
 fi
 
+# 添加archlinuxcn镜像源
+echo -e "[archlinuxcn]\nServer = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/\$arch" | sudo tee -a /etc/pacman.conf
+sudo pacman -Syyu --noconfirm
+
 # 安装依赖
 sudo pacman -S git vim zsh curl wget yay fcitx5 fcitx5-configtool fcitx5-qt fcitx5-gtk fcitx5-chinese-addons fcitx5-material-color --noconfirm
 sudo pacman -S hyprland swww hyprlock hyprcursor hyprgraphics hyprland-qt-support hyprland-qtutils hyprlang hyprutils hyprwayland-scanner --noconfirm
-sudo pacman -S waybar rofi nvim thunar mpv kitty fastfetch dunst cava btop cliphist --noconfirm
+sudo pacman -S waybar rofi nvim thunar mpv kitty fastfetch dunst cava btop cliphist grim slurp base-devel--noconfirm
 sudo pacman -S ttf-dejavu ttf-liberation ttf-font-awesome ttf-jetbrains-mono-nerd --noconfirm
 yay -S clash-verge-rev-bin --noconfirm
 
@@ -44,6 +48,10 @@ echo "字体已安装"
 cp -r ./.icons ~/.icons
 # cp -r ./icons /usr/share/icons
 echo "icons 已安装"
+
+# 复制wallpaper
+cp -r ./wallpaper ~/wallpaper
+echo "wallpaper 已安装"
 
 # 是否编译linux内核
 read -p "是否编译linux内核（没事不要编译，应为耗的时间长）？(y/n) " compile_kernel
