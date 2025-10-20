@@ -2,6 +2,12 @@
 
 AronaOS-dotfile 是基于Manjaro Linux的hyprland桌面环境的dotfile配置文件
 
+壁纸：[哲风壁纸](https://haowallpaper.com/)
+
+图标：[Papirus Icon Theme](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
+
+sddm 主题：[arona-sddm-login](https://github.com/Machillka/arona-sddm-login)
+
 bilibili 视频链接：[什么？AronaOS【精剪版】](https://www.bilibili.com/video/BV17E411h73h/)
 
 主界面
