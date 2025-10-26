@@ -15,6 +15,7 @@ read -p "是否安装图标？(y/n) " install_icons
 read -p "是否配置sddm？(y/n) " config_sddm
 read -p "是否编译linux内核（耗时很长，请谨慎选择）？(y/n) " compile_kernel
 read -p "是否更改/etc/os-release 文件？(y/n) " change_os_release
+read -p "是否更改GURB配置？(y/n) " change_grub
 
 # 确认安装
 echo ""
@@ -24,6 +25,7 @@ echo "安装图标: $install_icons"
 echo "配置sddm: $config_sddm"
 echo "编译内核: $compile_kernel"
 echo "更改os-release: $change_os_release"
+echo "更改GURB配置: $change_grub"
 echo ""
 
 read -p "确认开始安装？(y/n) " confirm_install
@@ -154,6 +156,15 @@ if [[ $change_os_release == "y" ]]; then
     sudo sed -i 's/NAME=.*$/NAME="AronaOS"/' /etc/os-release
     sudo sed -i 's/PRETTY_NAME=.*$/PRETTY_NAME="AronaOS"/' /etc/os-release
     echo "已更改/etc/os-release 文件"
+fi
+
+# 更改GURB配置
+if [[ $change_grub == "y" ]]; then
+    echo "更改GURB配置..."
+    # 修改GRUB_DISTRIBUTOR
+    sudo sed -i 's/GRUB_DISTRIBUTOR=.*$/GRUB_DISTRIBUTOR="AronaOS"/' /etc/default/grub
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
+    echo "已更改GURB配置"
 fi
 
 echo ""
