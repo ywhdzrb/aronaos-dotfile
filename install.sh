@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # 欢迎信息
-echo "=== AronaOS 安装脚本 ==="
+cat welcome.txt
 
 # 前置询问所有选项
 read -p "是否安装AronaOS？(y/n) " install_arona

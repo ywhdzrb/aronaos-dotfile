@@ -1,5 +1,7 @@
 # AronaOS-dotfile
 
+<img src="./img/4.png">
+
 AronaOS-dotfile 是基于Manjaro Linux的hyprland桌面环境的dotfile配置文件
 
 壁纸：[哲风壁纸](https://haowallpaper.com/)
