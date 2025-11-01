@@ -86,9 +86,11 @@ echo "icons 已安装"
 # 安装图标主题
 if [[ $install_icons == "y" ]]; then
     echo "安装Papirus图标主题..."
-    wget -qO- https://git.io/papirus-icon-theme-install | sh
-    wget -qO- https://git.io/papirus-icon-theme-install | env DESTDIR="$HOME/.icons" sh
-    wget -qO- https://git.io/papirus-icon-theme-install | env DESTDIR="$HOME/.local/share/icons" sh
+    # wget -qO- https://git.io/papirus-icon-theme-install | sh
+    # wget -qO- https://git.io/papirus-icon-theme-install | env DESTDIR="$HOME/.icons" sh
+    # wget -qO- https://git.io/papirus-icon-theme-install | env DESTDIR="$HOME/.local/share/icons" sh
+    tar -xvf ./papirus-icon-theme.tar.gz
+    cp -r ./Papirus* ~/.local/share/icons/
     echo "图标主题已安装"
 fi
 
