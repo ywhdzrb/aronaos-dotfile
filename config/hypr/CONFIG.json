@@ -1,0 +1,17 @@
+{
+    "pomodoro": {
+        "work_duration": 1200,
+        "break_duration": 20
+    },
+    "colors": {
+        "al": "#00000000",
+        "bg": "#64646480",
+        "bga": "#00000000",
+        "fg": "#e5e5e5ff",
+        "ac": "#0000ff",
+        "se": "#e5e5e5ff"
+    },
+    "advanced": {
+        "auto_save": true
+    }
+}
