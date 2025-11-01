@@ -57,7 +57,7 @@ sudo pacman -S waybar rofi nvim thunar mpv kitty fastfetch dunst cava btop cliph
 sudo pacman -S ttf-dejavu ttf-liberation ttf-font-awesome ttf-jetbrains-mono-nerd --noconfirm
 
 echo "安装AUR软件..."
-yay -S clash-verge-rev-bin linuxqq qqmusic wechat --noconfirm
+# yay -S clash-verge-rev-bin linuxqq qqmusic wechat --noconfirm
 
 echo "安装依赖完成"
 
@@ -89,8 +89,7 @@ if [[ $install_icons == "y" ]]; then
     # wget -qO- https://git.io/papirus-icon-theme-install | sh
     # wget -qO- https://git.io/papirus-icon-theme-install | env DESTDIR="$HOME/.icons" sh
     # wget -qO- https://git.io/papirus-icon-theme-install | env DESTDIR="$HOME/.local/share/icons" sh
-    tar -xvf ./papirus-icon-theme.tar.gz
-    cp -r ./Papirus* ~/.local/share/icons/
+    tar -xvf ./papirus-icon-theme.tar.gz /usr/share/icons/
     echo "图标主题已安装"
 fi
 
@@ -102,8 +101,8 @@ echo "wallpaper 已安装"
 # 配置sddm
 if [[ $config_sddm == "y" ]]; then
     echo "配置sddm..."
-    cp -r ./arona-sddm-login /usr/share/sddm/themes/arona-sddm-login
-    sudo sed -i 's/Current=/Current=arona-sddm-login/' /etc/sddm.conf.d/arona-sddm.conf
+    sudo cp -r ./arona-sddm-login /usr/share/sddm/themes/arona-sddm-login
+    sudo sed -i 's/Current=/Current=arona-sddm-login/' /etc/sddm.conf
     echo "sddm 已配置"
 fi
 
@@ -119,7 +118,7 @@ if [[ $compile_kernel == "y" ]]; then
 
         cd linux-6.17
 
-        cp ../.config .config
+        cp ../.config-linux .config
 
         make -j$(nproc)
 
