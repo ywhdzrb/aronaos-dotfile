@@ -80,7 +80,7 @@ echo "字体已安装"
 
 # 复制icons
 echo "安装图标..."
-cp -r ./.icons ~/.icons
+cp -r ./.icons/* ~/.icons
 echo "icons 已安装"
 
 # 安装图标主题
