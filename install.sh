@@ -63,7 +63,7 @@ echo "安装依赖完成"
 
 # 转移配置文件
 echo "正在配置系统..."
-cp -r ./config ~/.config 
+cp -r ./.config/* ~/.config 
 
 # 配置zsh
 echo "配置zsh..."
