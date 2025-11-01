@@ -56,7 +56,7 @@ sudo pacman -S hyprland swww hyprlock hyprcursor hyprgraphics hyprland-qt-suppor
 sudo pacman -S waybar rofi nvim thunar mpv kitty fastfetch dunst cava btop cliphist grim slurp base-devel playerctl --noconfirm
 sudo pacman -S ttf-dejavu ttf-liberation ttf-font-awesome ttf-jetbrains-mono-nerd --noconfirm
 
-echo "安装AUR软件..."
+# echo "安装AUR软件..."
 # yay -S clash-verge-rev-bin linuxqq qqmusic wechat --noconfirm
 
 echo "安装依赖完成"
