@@ -20,12 +20,62 @@ bilibili 视频链接：[什么？AronaOS【精剪版】](https://www.bilibili.c
 <img src="./img/3.png">
 
 ## 安装
+注意，安装脚本可能有问题，最好手动安装
+
+自动安装：
 ```bash
 git clone https://github.com/ywhdzrb/aronaos-dotfile.git
 cd aronaos-dotfile
 ./install.sh
 ```
+手动安装：
+```bash
+cd aronaos-dotfile
 
+# 切换镜像源
+echo -e "Server = https://mirrors.tuna.tsinghua.edu.cn/manjaro/stable/\$repo/\$arch\nServer = https://mirrors.tuna.tsinghua.edu.cn/archlinux/\$repo/os/\$arch" | sudo tee /etc/pacman.d/mirrorlist
+
+# 添加AUR软件源
+echo -e "[archlinuxcn]\nServer = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/\$arch" | sudo tee -a /etc/pacman.conf
+sudo pacman -Syyu
+
+# 安装依赖
+sudo pacman -S git vim zsh curl wget yay fcitx5 fcitx5-configtool fcitx5-qt fcitx5-gtk fcitx5-chinese-addons fcitx5-material-color --noconfirm
+
+sudo pacman -S hyprland swww hyprlock hyprcursor hyprgraphics hyprland-qt-support hyprland-qtutils hyprlang hyprutils hyprwayland-scanner --noconfirm
+
+sudo pacman -S waybar rofi nvim thunar mpv kitty fastfetch dunst cava btop cliphist grim slurp base-devel playerctl --noconfirm
+
+sudo pacman -S ttf-dejavu ttf-liberation ttf-font-awesome ttf-jetbrains-mono-nerd --noconfirm
+
+# 安装AUR软件
+yay -S clash-verge-rev-bin linuxqq qqmusic wechat --noconfirm
+
+# 安装字体
+cp ./fonts/* ~/.local/share/fonts/
+fc-cache -f -v
+
+# 复制icons
+cp -r ./.icons/* ~/.icons
+
+# 复制配置文件
+cp -r ./.config/* ~/.config 
+
+# 配置zsh
+sh -c "$(curl -fsSL https://gitee.com/mirrors_sigma/zinit/raw/master/zinit-install.zsh)"
+cp ./.zshrc ~/.zshrc
+chsh -s /bin/zsh
+
+# 安装图标主题
+tar -xvf ./papirus-icon-theme.tar.gz /usr/share/icons/
+
+# 复制wallpaper
+cp -r ./wallpaper ~/wallpaper
+
+# 配置sddm
+sudo cp -r ./arona-sddm-login /usr/share/sddm/themes/arona-sddm-login
+sudo sed -i 's/Current=/Current=arona-sddm-login/' /etc/sddm.conf
+```
 ## 按键绑定
 
 ### 应用启动
