@@ -10,6 +10,8 @@ AronaOS-dotfile 是基于Manjaro Linux的hyprland桌面环境的dotfile配置文
 
 sddm 主题：[arona-sddm-login](https://github.com/Machillka/arona-sddm-login)
 
+zsh框架：[zinit](https://github.com/zdharma-continuum/zinit)
+
 bilibili 视频链接：[什么？AronaOS【精剪版】](https://www.bilibili.com/video/BV17E411h73h/)
 
 主界面
@@ -20,7 +22,7 @@ bilibili 视频链接：[什么？AronaOS【精剪版】](https://www.bilibili.c
 <img src="./img/3.png">
 
 ## 安装
-注意，安装脚本可能有问题，最好手动安装
+注意，安装脚本可能有问题，要是自动安装不行那就手动安装
 
 自动安装：
 ```bash

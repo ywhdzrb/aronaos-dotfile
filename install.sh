@@ -54,10 +54,10 @@ echo "安装系统依赖..."
 sudo pacman -S git vim zsh curl wget yay fcitx5 fcitx5-configtool fcitx5-qt fcitx5-gtk fcitx5-chinese-addons fcitx5-material-color --noconfirm
 sudo pacman -S hyprland swww hyprlock hyprcursor hyprgraphics hyprland-qt-support hyprland-qtutils hyprlang hyprutils hyprwayland-scanner --noconfirm
 sudo pacman -S waybar rofi nvim thunar mpv kitty fastfetch dunst cava btop cliphist grim slurp base-devel playerctl --noconfirm
-sudo pacman -S ttf-dejavu ttf-liberation ttf-font-awesome ttf-jetbrains-mono-nerd --noconfirm
+sudo pacman -S ttf-dejavu ttf-liberation ttf-font-awesome ttf-jetbrains-mono-nerd  clash-verge-rev --noconfirm
 
 echo "安装AUR软件..."
-yay -S clash-verge-rev-bin linuxqq qqmusic wechat --noconfirm
+yay -S linuxqq qqmusic wechat --noconfirm
 
 echo "安装依赖完成"
 
@@ -67,8 +67,9 @@ cp -r ./.config/* ~/.config
 
 # 配置zsh
 echo "配置zsh..."
-sh -c "$(curl -fsSL https://gitee.com/mirrors_sigma/zinit/raw/master/zinit-install.zsh)"
+sh -c "$(curl -fsSL https://gitee.com/quasaryan/zinit/raw/main/scripts/install.sh)"
 cp ./.zshrc ~/.zshrc
+cp -r ./zinit/* ~/.local/share/zinit/ --debug
 chsh -s /bin/zsh
 echo "zsh 已配置"
 
