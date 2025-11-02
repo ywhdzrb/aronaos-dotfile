@@ -70,6 +70,7 @@ echo "配置zsh..."
 sh -c "$(curl -fsSL https://gitee.com/quasaryan/zinit/raw/main/scripts/install.sh)"
 cp ./.zshrc ~/.zshrc
 cp -r ./zinit/* ~/.local/share/zinit/ --debug
+cp ./.p10k.zsh ~/.p10k.zsh
 chsh -s /bin/zsh
 echo "zsh 已配置"
 
