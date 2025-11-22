@@ -9,7 +9,7 @@ from pathlib import Path
 
 class PomodoroTimer:
     def __init__(self):
-        with open('CONFIG.json', 'r') as f:
+        with open(str(Path.home() / '.config/hypr/CONFIG.json'), 'r') as f:
             config = json.load(f)
         self.work_duration = config["pomodoro"]["work_duration"]  # 工作时间
         self.break_duration = config["pomodoro"]["break_duration"]      # 休息时间

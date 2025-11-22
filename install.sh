@@ -103,6 +103,7 @@ echo "wallpaper 已安装"
 # 配置sddm
 if [[ $config_sddm == "y" ]]; then
     echo "配置sddm..."
+    mkdir -p /usr/share/sddm/themes/arona-sddm-login
     sudo cp -r ./arona-sddm-login /usr/share/sddm/themes/arona-sddm-login
     sudo sed -i 's/Current=/Current=arona-sddm-login/' /etc/sddm.conf
     echo "sddm 已配置"
